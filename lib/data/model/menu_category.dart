@@ -1,0 +1,3 @@
+enum MenuCategory {
+  foods, drinks
+}

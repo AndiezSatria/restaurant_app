@@ -21,7 +21,7 @@ class Restaurant {
   late String description;
   late String pictureId;
   late String city;
-  late String rating;
+  late double rating;
   late Menu menus;
 
   Restaurant({

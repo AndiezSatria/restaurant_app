@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/common/styles.dart';
+import 'package:restaurant_app/data/model/restaurant.dart';
 import 'package:restaurant_app/ui/home_page.dart';
+import 'package:restaurant_app/ui/restaurant_detail_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Restaurants',
       theme: ThemeData(
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          selectedItemColor: secondaryColor,
+          unselectedItemColor: Colors.grey,
+        ),
         colorScheme: Theme.of(context).colorScheme.copyWith(
               primary: mainColor,
               onPrimary: Colors.black,
@@ -23,8 +29,8 @@ class MyApp extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             primary: terierColor,
             onPrimary: secondaryColor,
-            textStyle: TextStyle(),
-            shape: RoundedRectangleBorder(
+            textStyle: const TextStyle(),
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(0),
               ),
@@ -34,7 +40,11 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: HomePage.routeName,
       routes: {
-        HomePage.routeName: (context) => HomePage(),
+        HomePage.routeName: (context) => const HomePage(),
+        RestaurantDetailPage.routeName: (context) => RestaurantDetailPage(
+              restaurant:
+                  ModalRoute.of(context)?.settings.arguments as Restaurant,
+            ),
       },
     );
   }
