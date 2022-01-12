@@ -29,6 +29,7 @@ class RestaurantItemWidget extends StatelessWidget {
               child: Image.network(
                 restaurant.pictureId,
                 width: 135,
+                height: 100,
                 fit: BoxFit.cover,
               ),
             ),
